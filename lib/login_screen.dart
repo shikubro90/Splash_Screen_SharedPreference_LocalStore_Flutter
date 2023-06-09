@@ -38,11 +38,16 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                TextFormField(decoration: InputDecoration(hintText: "Email"),keyboardType: TextInputType.text,),
+                TextFormField(
+                  controller: userEmailController,
+                  decoration: InputDecoration(hintText: "Email"),
+                  keyboardType: TextInputType.text,
+                ),
                 SizedBox(
                   height: 15,
                 ),
                 TextFormField(
+                  controller: userPasswordController,
                   decoration: InputDecoration(hintText: "Password"),
                   keyboardType: TextInputType.text,
                 ),
@@ -59,12 +64,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     SharedPreferences pref =
                         await SharedPreferences.getInstance();
 
-                    pref.setString("email", userEmailController.text.toString());
-                    pref.setString("password", userPasswordController.text.toString());
+                    pref.setString(
+                        "email", userEmailController.text.toString());
+                    pref.setString(
+                        "password", userPasswordController.text.toString());
                     pref.setString("age", userAge.text.toString());
                     pref.setBool('status', true);
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
 
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
                   },
                   child: Container(
                     margin: EdgeInsets.only(top: 20),

@@ -10,22 +10,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String email = '', age = '';
+  String email = '';
+  String age = '';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     loadData();
-    setState(() {
 
-    });
   }
 
   void loadData() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     email = sp.getString("email") ?? '';
     age = sp.getString('age') ?? '';
+    setState(() {
+
+    });
   }
 
   void logout() async{
