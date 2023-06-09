@@ -26,11 +26,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void isLogin() async{
-
     SharedPreferences sp = await SharedPreferences.getInstance();
-    bool? status = sp.getBool('status');
+    bool status = sp.getBool('status')?? false;
 
-    if(status == true){
+    if(status){
       Navigator.push(
           context as BuildContext, MaterialPageRoute(builder: (context) => const HomeScreen()));
     }else{
